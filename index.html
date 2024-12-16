@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echonic Name Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; }
+        input, button { margin: 10px 0; padding: 10px; width: 100%; }
+        .output { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Echonic Name Generator & Translator</h1>
+        <input type="text" id="inputWord" placeholder="Enter a word to translate">
+        <button onclick="translateToEchonic()">Translate to Echonic</button>
+        <button onclick="generateEchonicName()">Generate Echonic Name</button>
+        
+        <div class="output">
+            <h2>Generated Name:</h2>
+            <p id="generatedName"></p>
+            <h2>Translation:</h2>
+            <p id="translation"></p>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate a random Echonic name
+        function generateEchonicName() {
+            const syllables = ['el', 'ar', 'in', 'or', 'an', 'ith', 'ul', 'en', 'as', 'ith'];
+            let name = '';
+            const nameLength = Math.floor(Math.random() * 3) + 2; // Name length between 2 and 4 syllables
+            
+            for (let i = 0; i < nameLength; i++) {
+                name += syllables[Math.floor(Math.random() * syllables.length)];
+            }
+            document.getElementById('generatedName').innerText = name.charAt(0).toUpperCase() + name.slice(1);
+        }
+
+        // Simple translation function
+        function translateToEchonic() {
+            const word = document.getElementById('inputWord').value.toLowerCase();
+            const translations = {
+                'i': 'elith',
+                'you': 'aril',
+                'he': 'orin',
+                'she': 'anith',
+                'we': 'ithul',
+                'they': 'enith'
+            };
+
+            const translation = translations[word] || 'No translation available';
+            document.getElementById('translation').innerText = translation;
+        }
+    </script>
+</body>
+</html>
