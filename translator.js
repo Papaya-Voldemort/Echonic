@@ -6,6 +6,7 @@ function translateWord(word) {
         'she': 'anith',
         'we': 'ithul',
         'they': 'enith'
+        'god': 'eloth ki'
     };
 
     return translations[word] || 'No translation available';
